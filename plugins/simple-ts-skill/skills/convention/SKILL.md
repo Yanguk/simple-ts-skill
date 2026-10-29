@@ -1,6 +1,6 @@
 ---
 name: convention
-description: TypeScript/TSX 코드를 작성·수정·리뷰할 때 적용하는 컨벤션. .ts/.tsx 파일 편집, 반복문·타입 설계·에러 처리·테스트 작성, React 컴포넌트·훅·상태 관리 작성 시 사용.
+description: TypeScript/TSX 코드를 작성·수정·리뷰할 때 적용하는 컨벤션. .ts/.tsx 파일 편집, 반복문·클래스·변수 선언·제어문 작성, React 컴포넌트·훅 작성 시 사용.
 ---
 
 # TypeScript 컨벤션
@@ -299,34 +299,6 @@ for (const n of range(2, 11, 2)) {
 
 화살표 함수의 표현식 본문(`x => x * 2`)은 제어문이 아니므로 해당하지 않는다.
 
-## 5. 타입 설계
-<!-- TODO: any/unknown, type vs interface, enum vs union, discriminated union -->
+## 5. React
 
-## 6. null / undefined
-<!-- TODO -->
-
-## 7. 경계(boundary) 검증
-<!-- TODO: 외부 입력 런타임 검증 정책 -->
-
-## 8. 에러 처리
-<!-- TODO: throw vs Result -->
-
-## 9. 함수 / 모듈
-<!-- TODO: export 방식, 반환 타입 명시, barrel -->
-
-## 10. 테스트
-<!-- TODO -->
-
-## 11. React
-
-React 코드(.tsx/.jsx 컴포넌트·훅)를 다룰 때만 아래 파일을 읽는다. 위 1~10번 규칙은 React 코드에도 그대로 적용된다.
-
-- **React 작업이면 항상**: [react/common.md](react/common.md)
-- 그 외에는 **작업에 해당하는 것만**:
-
-| 작업 | 읽을 파일 |
-|---|---|
-| 컴포넌트 작성·분리, props 설계 | [react/component.md](react/component.md) |
-| 커스텀 훅, `useEffect`/`useMemo`/`useCallback` | [react/hooks.md](react/hooks.md) |
-| 상태 위치, 서버 상태, 전역 상태 | [react/state.md](react/state.md) |
-| 컴포넌트·훅 테스트 | [react/testing.md](react/testing.md) |
+React 코드(.tsx/.jsx 컴포넌트·훅)를 다룰 때는 [react/common.md](react/common.md)도 읽는다. 위 1~4번 규칙은 React 코드에도 그대로 적용된다.

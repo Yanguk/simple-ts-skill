@@ -49,11 +49,7 @@ claude plugin install simple-ts-skill@yanguk
 plugins/simple-ts-skill/skills/convention/
 ├── SKILL.md          ← TS 규칙 (항상 적용)
 └── react/
-    ├── common.md     ← React 작업이면 항상 읽음
-    ├── component.md  ┐
-    ├── hooks.md      │ 작업에 해당하는 것만 읽음
-    ├── state.md      │
-    └── testing.md    ┘
+    └── common.md     ← React 작업이면 읽음
 ```
 
 레포에 이미 eslint/tsconfig/기존 스타일이 있으면 그쪽이 우선한다.
