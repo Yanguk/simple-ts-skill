@@ -1,5 +1,5 @@
 ---
-name: simple-ts-skill
+name: convention
 description: TypeScript/TSX 코드를 작성·수정·리뷰할 때 적용하는 컨벤션. .ts/.tsx 파일 편집, 반복문·타입 설계·에러 처리·테스트 작성, React 컴포넌트·훅·상태 관리 작성 시 사용.
 ---
 
