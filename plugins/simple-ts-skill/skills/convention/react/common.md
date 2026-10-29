@@ -17,7 +17,9 @@
 // ✗  state 변화를 effect로 구독
 const [submitted, setSubmitted] = useState(false);
 useEffect(() => {
-  if (!submitted) return;
+  if (!submitted) {
+    return;
+  }
   void postOrder(form);
   showToast('주문 완료');
 }, [submitted]);

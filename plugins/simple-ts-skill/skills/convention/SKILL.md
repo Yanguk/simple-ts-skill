@@ -42,11 +42,15 @@ description: TypeScript/TSX 코드를 작성·수정·리뷰할 때 적용하는
 export function range(end: number): Generator<number>;
 export function range(start: number, end: number, step?: number): Generator<number>;
 export function* range(startOrEnd: number, end?: number, step = 1): Generator<number> {
-  if (step === 0) throw new RangeError('range() step must not be 0');
+  if (step === 0) {
+    throw new RangeError('range() step must not be 0');
+  }
   const [from, to] = end === undefined ? [0, startOrEnd] : [startOrEnd, end];
   const length = Math.max(0, Math.ceil((to - from) / step));
   // Array(length)는 빈 슬롯 배열이라 요소를 할당하지 않고, keys()는 lazy 이터레이터다
-  for (const k of Array(length).keys()) yield from + k * step;
+  for (const k of Array(length).keys()) {
+    yield from + k * step;
+  }
 }
 ```
 
@@ -221,9 +225,15 @@ if (user.isVip) {
 
 // ✓
 function shippingFee(user: User, order: Order): number {
-  if (user.isVip) return 0;
-  if (order.total >= 50_000) return 0;
-  if (order.region === 'jeju') return 6_000;
+  if (user.isVip) {
+    return 0;
+  }
+  if (order.total >= 50_000) {
+    return 0;
+  }
+  if (order.region === 'jeju') {
+    return 6_000;
+  }
   return 3_000;
 }
 const fee = shippingFee(user, order);
@@ -255,35 +265,61 @@ const label = score >= 90 ? 'A' : score >= 80 ? 'B' : 'C';
 
 // ✓
 function grade(score: number) {
-  if (score >= 90) return 'A';
-  if (score >= 80) return 'B';
+  if (score >= 90) {
+    return 'A';
+  }
+  if (score >= 80) {
+    return 'B';
+  }
   return 'C';
 }
 ```
 
 `const`는 재할당만 막을 뿐이다. 클로저 상태를 담는 `state` 객체 말고는 객체·배열을 변경하지 말고 새 값을 만든다 (`{ ...obj, key }`, `[...arr, item]`).
 
-## 4. 타입 설계
+## 4. 제어문은 항상 중괄호 `{ }`
+
+`if` / `else` / `for` / `while` / `do`의 본문은 **한 줄이어도 항상 중괄호로 감싸고 줄을 바꾼다**. early return(`if (x) return;`)도 예외 없다.
+
+**이유**: 한 줄짜리는 일반적인 프로그래밍 컨벤션이 아니라 읽을 때 걸린다. 나중에 본문에 줄을 추가할 때 중괄호를 빠뜨려 생기는 버그(goto fail류)도 막는다.
+
+```ts
+// ✗
+if (!user) return;
+for (const n of range(2, 11, 2)) console.log(n);
+
+// ✓
+if (!user) {
+  return;
+}
+for (const n of range(2, 11, 2)) {
+  console.log(n);
+}
+```
+
+화살표 함수의 표현식 본문(`x => x * 2`)은 제어문이 아니므로 해당하지 않는다.
+
+## 5. 타입 설계
 <!-- TODO: any/unknown, type vs interface, enum vs union, discriminated union -->
 
-## 5. null / undefined
+## 6. null / undefined
 <!-- TODO -->
 
-## 6. 경계(boundary) 검증
+## 7. 경계(boundary) 검증
 <!-- TODO: 외부 입력 런타임 검증 정책 -->
 
-## 7. 에러 처리
+## 8. 에러 처리
 <!-- TODO: throw vs Result -->
 
-## 8. 함수 / 모듈
+## 9. 함수 / 모듈
 <!-- TODO: export 방식, 반환 타입 명시, barrel -->
 
-## 9. 테스트
+## 10. 테스트
 <!-- TODO -->
 
-## 10. React
+## 11. React
 
-React 코드(.tsx/.jsx 컴포넌트·훅)를 다룰 때만 아래 파일을 읽는다. 위 1~9번 규칙은 React 코드에도 그대로 적용된다.
+React 코드(.tsx/.jsx 컴포넌트·훅)를 다룰 때만 아래 파일을 읽는다. 위 1~10번 규칙은 React 코드에도 그대로 적용된다.
 
 - **React 작업이면 항상**: [react/common.md](react/common.md)
 - 그 외에는 **작업에 해당하는 것만**:
