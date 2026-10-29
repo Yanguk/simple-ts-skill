@@ -46,10 +46,23 @@ claude plugin install simple-ts-skill@yanguk
 ### 구성
 
 ```
-plugins/simple-ts-skill/skills/convention/
-├── SKILL.md          ← TS 규칙 (항상 적용)
-└── react/
-    └── common.md     ← React 작업이면 읽음
+plugins/simple-ts-skill/skills/
+├── convention/
+│   ├── SKILL.md      ← TS 규칙 (항상 적용)
+│   └── react/
+│       └── common.md ← React 작업이면 읽음
+└── fp/
+    ├── SKILL.md      ← 의존성 없는 FP 유틸 (필요할 때 프로젝트에 복사)
+    ├── option.ts     ← Option (Some/None, unwrap, expect)
+    ├── option.test.ts
+    ├── result.ts     ← Result (Ok/Err, unwrap, expect)
+    └── result.test.ts
+```
+
+FP 유틸만 직접 부르려면:
+
+```
+/simple-ts-skill:fp 이 함수 반환을 Option으로 바꿔줘
 ```
 
 레포에 이미 eslint/tsconfig/기존 스타일이 있으면 그쪽이 우선한다.
