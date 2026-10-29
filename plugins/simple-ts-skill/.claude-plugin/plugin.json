@@ -1,0 +1,8 @@
+{
+  "name": "simple-ts-skill",
+  "version": "0.1.0",
+  "description": "TypeScript 작성·리뷰 컨벤션 스킬",
+  "author": {
+    "name": "Yanguk Heo"
+  }
+}
