@@ -50,7 +50,7 @@ plugins/simple-ts-skill/skills/
 ├── convention/
 │   ├── SKILL.md      ← TS 규칙 (항상 적용)
 │   └── react/
-│       └── common.md ← React 작업이면 읽음
+│       └── hooks.md  ← React 작업이면 읽음 (useEffect·useRef 규칙)
 └── fp/
     ├── SKILL.md      ← 의존성 없는 FP 유틸 (필요할 때 프로젝트에 복사)
     ├── option.ts     ← Option (Some/None, unwrap, expect)

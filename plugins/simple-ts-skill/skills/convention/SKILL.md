@@ -301,4 +301,4 @@ for (const n of range(2, 11, 2)) {
 
 ## 5. React
 
-React 코드(.tsx/.jsx 컴포넌트·훅)를 다룰 때는 [react/common.md](react/common.md)도 읽는다. 위 1~4번 규칙은 React 코드에도 그대로 적용된다.
+React 코드(.tsx/.jsx 컴포넌트·훅)를 다룰 때는 [react/hooks.md](react/hooks.md)도 읽는다. 위 1~4번 규칙은 React 코드에도 그대로 적용된다.
